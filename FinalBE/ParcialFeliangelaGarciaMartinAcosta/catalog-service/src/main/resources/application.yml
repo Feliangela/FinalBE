@@ -1,0 +1,45 @@
+spring:
+  application:
+    name: catalog-service
+  config:
+   # import: optional:configserver:http://localhost:8888
+
+    # Configuración de RabbitMQ
+    spring:
+      rabbitmq:
+        host: localhost
+        port: 5672
+        username: guest
+        password: guest
+
+    # Nombre de la cola para recibir mensajes
+    catalog:
+      queue: catalog-queue
+
+      zipkin:
+       base-url: http:/localhost:9411/
+       enabled: true
+
+       queue:
+         persona:
+           name: QueueUno
+
+           message: catalogo now up
+
+  management:
+    endpoints:
+      web:
+        exposure:
+          include: '*'
+    health:
+      circuitbreakers:
+        enable: true
+    endpoint:
+      health:
+        show-details: always
+
+# Configuración de MongoDB
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/catalog_database
+

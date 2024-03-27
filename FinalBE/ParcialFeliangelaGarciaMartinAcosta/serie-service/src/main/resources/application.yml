@@ -1,0 +1,28 @@
+spring:
+    mongodb:
+        embedded:
+            version: 4.0.2
+    data:
+        mongodb:
+            database: test
+            port: 27017
+server:
+    port: 0
+
+    # Configuración de RabbitMQ
+    spring:
+        rabbitmq:
+            host: localhost
+            port: 5672
+            username: guest
+            password: guest
+
+    # Nombre de la cola para recibir mensajes
+    movie:
+        queue: serie-queue
+
+        # Configuración de MongoDB
+        spring:
+        data:
+        mongodb:
+        uri: mongodb://localhost:27017/movie_database

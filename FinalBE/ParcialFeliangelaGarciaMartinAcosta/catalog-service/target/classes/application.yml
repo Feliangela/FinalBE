@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: catalog-service
+  config:
+    import: optional:configserver:http://localhost:8888
+
+  management:
+    endpoints:
+      web:
+        exposure:
+          include: '*'
+    health:
+      circuitbreakers:
+        enable: true
+    endpoint:
+      health:
+        show-details: always
+
+        # Configuración de RabbitMQ
+        spring.rabbitmq.host=localhost
+        spring.rabbitmq.port=5672
+        spring.rabbitmq.username=guest
+        spring.rabbitmq.password=guest
+
+        # Nombre de la cola para recibir mensajes
+        catalog.queue=catalog-queue
